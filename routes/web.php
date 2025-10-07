@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+Route::get('/', function () {
+    return view('welcome');
+});
+ 
+Route::get('/Subscribe/user',function(){
+
+    return view('auth.subscribe');
+})->name('subscribe.user');
+Route::get('/login/admin',function(){
+    return view('auth.Seconnecter');
+})->name('SeConnecterForm');
+Route::post('/login/admin',[AuthController::class,'Admin'])->name('Seconnecter.admin');
+Route::get('/logout',[AuthController::class,'AdminDeconnecter'])->name('deconnecter.admin');
+
+//router controle panel
+
+//add category
+
+Route::get('/Category/index',[CategoryController::class,'index'])->name('categorie.index');
+Route::get('/Category/form',[CategoryController::class,'Showform'])->name('Category.form');
+
+Route::post('/Category',[CategoryController::class,'store'])->name('categorie.store');
+
+
+//update categorie soit modifier soit supprimer
+
+Route::get('/Category/delete/{id}',[CategoryController::class,'destroy'])->name('categorie.destroy');
+
+Route::get('/Category/{id}/edit',[CategoryController::class,'edit'])->name('categorie.edit');
+
+Route::put('/Category/{id}',[CategoryController::class,'update'])->name('Category.update');
