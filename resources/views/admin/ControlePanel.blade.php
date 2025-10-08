@@ -61,7 +61,9 @@
             <tbody>
                 @foreach( $categories as $categorie)
                     <tr>
-                        <td><a href="" class="font-bold hover:text-cyan-500">{{$categorie['categoriePere']}}</a></td>
+                        <td>
+                            <a href="{{route('categorie.show',$categorie['id'])}}" class="font-bold hover:text-cyan-500">{{$categorie['categoriePere']}}</a>
+                        </td>
                         <td>{{$categorie['categorieFils']}}</td>
                         <td>{{$categorie['updated_at']}}</td>
                         <td class="my-0.5">

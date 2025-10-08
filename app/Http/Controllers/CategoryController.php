@@ -71,4 +71,11 @@ class CategoryController extends Controller
 
 
     }
+    public function show($idCategory){
+        $categorie =Category::findOrFail($idCategory);
+      
+        return view('admin.Posts.ajouterPost',['categorie'=>$categorie]); 
+
+
+    }
 }

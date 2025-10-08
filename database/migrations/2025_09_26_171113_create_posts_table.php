@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->timestamps();
+            $table->string('title');
+            $table->timestamps(); //date postulation
+            $table->string('description');
+            $table->string('description_detail');
+            $table->string('image');
+            $table->foreignId('category_id')
+                   ->constrained();
+           
         });
     }
 

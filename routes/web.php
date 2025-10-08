@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use  App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,6 +23,7 @@ Route::get('/logout',[AuthController::class,'AdminDeconnecter'])->name('deconnec
 //add category
 
 Route::get('/Category/index',[CategoryController::class,'index'])->name('categorie.index');
+
 Route::get('/Category/form',[CategoryController::class,'Showform'])->name('Category.form');
 
 Route::post('/Category',[CategoryController::class,'store'])->name('categorie.store');
@@ -34,3 +36,9 @@ Route::get('/Category/delete/{id}',[CategoryController::class,'destroy'])->name(
 Route::get('/Category/{id}/edit',[CategoryController::class,'edit'])->name('categorie.edit');
 
 Route::put('/Category/{id}',[CategoryController::class,'update'])->name('Category.update');
+
+Route::get('/Category/{id}',[CategoryController::class,'show'])->name('categorie.show');
+
+ //add post:
+ Route::get('/Category/Post/form',[PostController::class,'showform'])->name('form.show');
+Route::get('/Category/Post/create',[PostController::class,'create'])->name('post.create');

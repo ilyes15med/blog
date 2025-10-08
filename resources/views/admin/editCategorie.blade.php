@@ -22,7 +22,7 @@
       <select id="CategoriesPere" name="Categorie_Pere" onchange="choisirCategorie()" class="border p-2 rounded-md w-full" required>
         <option value="">{{$categorie->categoriePere}}</option>
         <option value="sport">Sport</option>
-        <option value="info">Informatique</option>
+        <option value="informatique">Informatique</option>
         <option value="emploie">Emploi</option>
       </select>
     </label>
