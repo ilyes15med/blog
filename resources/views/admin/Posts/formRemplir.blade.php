@@ -2,81 +2,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle Panel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Posts form</title>
 </head>
 <body>
-        <!--nav bar -->
-    <div class="bg-teal-700 p-2">
-        <div class="flex justify-around  ">
-          <div class="hover:font-bold">
-            <b class="text-bold">Oxygen</b>
-          </div>
-          <div class="space-x-4 ">
-            <span class="hover:font-bold">Home</span>
-            <span class="hover:font-bold">About us</span>
-            <span class="hover:font-bold">contact</span>
-          </div>
-            <div>
-
-               <ul>
-                <li>{{ session('user_email') }}</li>
-                <li><a class="rounded-null p-1 bg-white hover:bg-red-600" href="{{route('deconnecter.admin')}}">Déconnecter</a></li>
-               </ul>
   
-       
+
+<div class="max-w-2xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold text-center mb-6">Ajouter un post</h1>
     
- 
 
- 
-            </div>
+    <form method="post" action="{{route('post.store',$category->id)}}" >
+      @csrf
+     
 
-        </div>    
-    </div> 
-    <div class="bg-slate-300 text-black">
-        <form method="post" action="">
-            @csrf
-            @method('put')
-            <h1 class="text-2xl font-bold text-center mb-4">ajouter un post</h1>
-            <label class="block">
-                <span class="block text-sm font-bold text-slate-700">Title :</span>
-                <input type="text" class="p-1 border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"/>
-   
-      
-           </label>
-           <label class="block">
-                <span class="block text-sm font-bold text-slate-700">image :</span>
-                <input type="text" class="p-1 border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"/>
-   
-      
-           </label>
-           <label class="block">
-                <span class="block text-sm font-bold text-slate-700">decription :</span>
-                <input type="text" class="p-1 border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"/>
-   
-      
-           </label>
-           <label class="block">
-                <span class="block text-sm font-bold text-slate-700">détail description  :</span>
-                <textarea  class="p-1 border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"></textarea>
-   
-      
-           </label>
-           <button type="submit" class="p-1 bg-sky-700 text-white font-bold py-2 rounded-md hover:bg-sky-800">
-             ajouter la post
-           </button>
+      <!-- Titre -->
+      <label class="block mb-4">
+        <span class="block text-sm font-semibold text-slate-700 mb-1">Titre :</span>
+        <input type="text" name="title" required
+               class="w-full p-2 border rounded-md border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600"/>
+      </label>
 
+      <!-- Image -->
+      <label class="block mb-4">
+        <span class="block text-sm font-semibold text-slate-700 mb-1">Image :</span>
+        <input type="file" name="image"
+               class="w-full p-2 border rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-600"/>
+      </label>
 
+      <!-- Description -->
+      <label class="block mb-4">
+        <span class="block text-sm font-semibold text-slate-700 mb-1">Description :</span>
+        <input type="text" name="description" required
+               class="w-full p-2 border rounded-md border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600"/>
+      </label>
 
+      <!-- Détail de la description -->
+      <label class="block mb-6">
+        <span class="block text-sm font-semibold text-slate-700 mb-1">Détail description :</span>
+        <textarea name="detail" rows="4" required
+                  class="w-full p-2 border rounded-md border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600"></textarea>
+      </label>
 
-        </form>
-   
-       
+      <!-- Bouton -->
+      <button type="submit"
+              class="w-full bg-sky-700 text-white font-semibold py-2 rounded-md hover:bg-sky-800 transition">
+        Ajouter le post
+      </button>
+    </form>
+  </div>
 
-
-    </div>
-</body>
-
+  </body>
 </html>

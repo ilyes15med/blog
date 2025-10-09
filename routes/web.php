@@ -39,6 +39,8 @@ Route::put('/Category/{id}',[CategoryController::class,'update'])->name('Categor
 
 Route::get('/Category/{id}',[CategoryController::class,'show'])->name('categorie.show');
 
- //add post:
- Route::get('/Category/Post/form',[PostController::class,'showform'])->name('form.show');
-Route::get('/Category/Post/create',[PostController::class,'create'])->name('post.create');
+//add post:
+Route::get('/Category/{id}/Posts',[PostController::class,'index'])->name('posts.index');
+Route::get('/Category/{id}/Post/form',[PostController::class,'showform'])->name('form.show');
+
+Route::post('/Category/{id}/Post/create',[PostController::class,'store'])->name('post.store');

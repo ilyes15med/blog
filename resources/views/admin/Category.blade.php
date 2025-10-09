@@ -54,7 +54,7 @@
         fils.innerHTML = `
           <option value="design">Design</option>
           <option value="SI">Système d'information</option>
-          <option value="DAW">Programmation web</option>
+          <option value="programmation">Programmation web</option>
         `;
       } else if (pere === "emploie") {
         fils.innerHTML = `

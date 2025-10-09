@@ -35,27 +35,39 @@
         </div>    
     </div> 
     <div class="bg-slate-300">
+        <p class="text-2xl text-bold  text-black">
+        {{$categorie['categoriePere']}}/{{$categorie['categorieFils']}}
+        </p>
    
     
     <table>
 
      <thead>
         <tr>
-           <th></th>
+           <th>title</th>
+           <th>image</th>
+           <th>description</th>
+           <th>detail description</th>
+           
         </tr>
      </thead>
      <tbody>
-        <tr>
-            <td class="text-bold text-2xl">
-                {{$categorie['categoriePere']}}/{{$categorie['categorieFils']}}
-            </td>
-
-        </tr>
+       
         <tr>
             <td> 
-            <a class="bg-green-600 hover:bg-green-700 p-1 " href="{{route('form.show')}}">Ajouter un post</a>
+            <a class="bg-green-600 hover:bg-green-700 p-1 " href="{{route('form.show',$categorie->id)}}">Ajouter un post</a>
             </td>
         </tr>
+        @foreach($posts as $post)
+        <tr>
+            <td>{{$post['title'] }}</td>
+            <td>{{$post['image']}}</td>
+            <td>{{$post['description']}}</td>
+            <td>{{$ ²qpost['description_detail']}}</td>
+
+        </tr>
+
+        @endforeach;
 
      </tbody>
     </table>
