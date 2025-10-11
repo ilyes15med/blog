@@ -14,7 +14,7 @@
     <h1 class="text-2xl font-bold text-center mb-6">Ajouter un post</h1>
     
 
-    <form method="post" action="{{route('post.store',$category->id)}}" >
+    <form method="post" enctype="multipart/form-data" action="{{route('post.store',$category->id)}}" >
       @csrf
      
 
@@ -29,7 +29,7 @@
       <label class="block mb-4">
         <span class="block text-sm font-semibold text-slate-700 mb-1">Image :</span>
         <input type="file" name="image"
-               class="w-full p-2 border rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-600"/>
+               class="w-full p-2 border rounded-md border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-600" required/>
       </label>
 
       <!-- Description -->

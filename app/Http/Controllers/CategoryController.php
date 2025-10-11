@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-
+use App\Models\Post;
 
 
 
@@ -73,8 +73,9 @@ class CategoryController extends Controller
     }
     public function show($idCategory){
         $categorie =Category::findOrFail($idCategory);
+        $posts =Post::all();
       
-        return view('admin.Posts.ajouterPost',['categorie'=>$categorie]); 
+        return view('admin.Posts.ajouterPost',['categorie'=>$categorie,'posts'=>$posts]); 
 
 
     }

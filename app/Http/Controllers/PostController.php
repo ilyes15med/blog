@@ -15,6 +15,7 @@ class PostController extends Controller
         $categorie = Category::findOrFail($id);
 
         $posts=Post::all();
+
         return view('admin.Posts.ajouterPost',[
             'categorie'=>$categorie,
             'posts'=>$posts
@@ -23,6 +24,7 @@ class PostController extends Controller
 
 
     }
+
     public function showform($id){
         $categorie=Category::findOrFail($id);
      
@@ -33,18 +35,23 @@ class PostController extends Controller
 
     }
     public function store(Request $request,$idCategorie){
+      
+      
+      
+      $imagepath = null;
+      if($request->hasFile('image')){
+        $imagepath=$request->file('image')->store('assets','public');
+      }
       $title=$request->title;
-      $image=$request->image;
       $description=$request->description;
       $description_detail=$request->detail;
-      Post::create([
 
+      Post::create([
         'title'=>$title,
-        'image'=>$image,
+        'image'=> $imagepath,
         'description'=>$description,
         'description_detail'=>$description_detail,
         'category_id'=>$idCategorie
-
       ]);
 
       /*$posts=  Post::all();
@@ -55,5 +62,11 @@ class PostController extends Controller
 
 
 
+    }
+    public function delete($idpost,$idCategory){
+
+        $post=Post::findOrFail($idpost)->first();
+        $post->delete();
+        return redirect()->route('posts.index',$idCategory)->with('status','suppression de la post succes ');
     }
 }

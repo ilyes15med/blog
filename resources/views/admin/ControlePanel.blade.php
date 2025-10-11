@@ -51,8 +51,7 @@
 
             <thead>
                 <tr class="text-red-600">
-                    <th>Categorie pere</th>
-                    <th>Categorie fils</th>
+                    <th>Categorie </th>
                     <th>date poste</th>
                     <th>action</th>
                 </tr>
@@ -62,9 +61,9 @@
                 @foreach( $categories as $categorie)
                     <tr>
                         <td>
-                            <a href="{{route('categorie.show',$categorie['id'])}}" class="font-bold hover:text-cyan-500">{{$categorie['categoriePere']}}</a>
+                            <a href="{{route('categorie.show',$categorie['id'])}}" class="font-bold hover:text-cyan-500">{{$categorie['categoriePere']}}/{{$categorie['categorieFils']}}</a>
                         </td>
-                        <td>{{$categorie['categorieFils']}}</td>
+                       
                         <td>{{$categorie['updated_at']}}</td>
                         <td class="my-0.5">
                              <a class="bg-red-600 text-white rounded hover:bg-red-700 pb-px" href="{{route('categorie.destroy',$categorie['id'])}}">Supprimer</a>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->timestamps(); //date postulation
             $table->string('description');
-            $table->string('description_detail');
+            $table->longText('description_detail');
             $table->string('image');
             $table->foreignId('category_id')
                    ->constrained();

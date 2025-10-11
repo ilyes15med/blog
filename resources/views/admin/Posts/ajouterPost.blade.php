@@ -38,9 +38,9 @@
         <p class="text-2xl text-bold  text-black">
         {{$categorie['categoriePere']}}/{{$categorie['categorieFils']}}
         </p>
-   
+        <a class="bg-green-600 hover:bg-green-700 p-1 " href="{{route('formAjouterPost.show',$categorie->id)}}">Ajouter un post</a>
     
-    <table>
+    <table class="bg-white text-black text-xl">
 
      <thead>
         <tr>
@@ -48,28 +48,36 @@
            <th>image</th>
            <th>description</th>
            <th>detail description</th>
+           <th>action</th>
            
         </tr>
      </thead>
-     <tbody>
+            <tbody  class="p-px">
+            @foreach($posts as $post)
+                <tr>
+                   
+                     <td>{{$post->title}}</td>
+                        <td>
+                            @if($post->image)
+                              <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="max-w-48 min-h-24 object-cover rounded-lg shadow">
+                       
+                            @endif
+                        </td>
+                     <td>{{$post->description}}</td>
+                     <td>{{$post->description_detail}}</td>
+                     <td>
+                      <a href="{{route('post.delete',[$categorie['id'],$post['id']])}}" class="bg-red-600 hover:bg-red-700 rounded-null p-px text-white text-bold">supprimer</a>
+                     </td>
+
+
+                   
+                </tr>
+            @endforeach
        
-        <tr>
-            <td> 
-            <a class="bg-green-600 hover:bg-green-700 p-1 " href="{{route('form.show',$categorie->id)}}">Ajouter un post</a>
-            </td>
-        </tr>
-        @foreach($posts as $post)
-        <tr>
-            <td>{{$post['title'] }}</td>
-            <td>{{$post['image']}}</td>
-            <td>{{$post['description']}}</td>
-            <td>{{$ ²qpost['description_detail']}}</td>
+    
+       
 
-        </tr>
-
-        @endforeach;
-
-     </tbody>
+            </tbody>
     </table>
    
        
