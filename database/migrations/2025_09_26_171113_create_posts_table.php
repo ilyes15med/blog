@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->timestamps(); //date postulation
-            $table->string('description');
+            $table->longText('description');
             $table->longText('description_detail');
             $table->string('image');
             $table->foreignId('category_id')

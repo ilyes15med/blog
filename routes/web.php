@@ -49,3 +49,7 @@ Route::post('/Category/{id}/Post/create',[PostController::class,'store'])->name(
 //delete post
 
 Route::get('/Category/{idCategorie}/Post/delete/{idPost}',[PostController::class,'delete'])->name('post.delete');
+
+//modifier post
+Route::get('/Category/{idcategorie}/Post/{idpost}/edit',[PostController::class,'edit'])->name('post.edit');
+Route::put('/Category/{idcategorie}/Post/{idpost}',[PostController::class,'update'])->name('post.update');

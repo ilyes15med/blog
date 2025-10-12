@@ -54,8 +54,7 @@ class PostController extends Controller
         'category_id'=>$idCategorie
       ]);
 
-      /*$posts=  Post::all();
-      return view('admin.Posts.ajouterPost',['posts'=>$posts]);*/
+      
       
       return redirect()->route('posts.index',$idCategorie);
 
@@ -63,10 +62,49 @@ class PostController extends Controller
 
 
     }
+
+
     public function delete($idpost,$idCategory){
 
         $post=Post::findOrFail($idpost)->first();
         $post->delete();
         return redirect()->route('posts.index',$idCategory)->with('status','suppression de la post succes ');
+    }
+
+
+    public function edit($idpost,$idCategorie){
+      $post=Post::findOrFail($idpost);
+      $categorie=Category::findOrFail($idCategorie);
+
+      return view('admin.Posts.editPost',['post'=>$post,'categorie'=>$categorie]);
+    }
+
+
+    public function update(Request $request,$idpost,$idCategorie){
+      
+      $title=$request->title;
+      $description=$request->description;
+      $description_detail=$request->detail;
+
+      $imagePath=null;
+      if( $request->hasfile('image')){
+        $imagePath=$request->file('image')->store('assets','public');
+      }
+
+
+     $post=Post::findOrFail($idpost);
+      
+     $post->update([
+        'title'=>$title,
+        'description'=>$description,
+        'description_detail'=>$description_detail,
+        'image'=>$imagePath,
+
+
+
+
+      ]);
+      return $this->index($idCategorie);
+
     }
 }

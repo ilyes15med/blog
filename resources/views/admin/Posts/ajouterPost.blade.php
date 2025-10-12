@@ -56,18 +56,19 @@
             @foreach($posts as $post)
                 <tr>
                    
-                     <td>{{$post->title}}</td>
-                        <td>
+                        <td class="p-px font-medium">{{$post->title}}</td>
+                        <td class="p-px">
                             @if($post->image)
                               <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="max-w-48 min-h-24 object-cover rounded-lg shadow">
                        
                             @endif
                         </td>
-                     <td>{{$post->description}}</td>
-                     <td>{{$post->description_detail}}</td>
-                     <td>
-                      <a href="{{route('post.delete',[$categorie['id'],$post['id']])}}" class="bg-red-600 hover:bg-red-700 rounded-null p-px text-white text-bold">supprimer</a>
-                     </td>
+                      <td  class="p-0.5">{{$post->description}}</td>
+                      <td class="p-0.5">{{$post->description_detail}}</td>
+                      <td>
+                            <a href="{{route('post.delete',[$categorie['id'],$post['id']])}}" class="bg-red-600 hover:bg-red-700 rounded-null p-px text-white font-bold">supprimer</a>
+                            <a href="{{route('post.edit',[$categorie['id'],$post['id']])}}" class="bg-amber-400 hover:bg-amber-500 rounded-null p-px text-white font-bold">modifier</a>
+                      </td>
 
 
                    
