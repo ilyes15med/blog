@@ -35,7 +35,7 @@
         </div>    
     </div> 
     <div class="bg-slate-300">
-        <p class="text-2xl text-bold  text-black">
+        <p class="text-2xl text-bold  text-red-950 mt-2.5">
         {{$categorie['categoriePere']}}/{{$categorie['categorieFils']}}
         </p>
         <a class="bg-green-600 hover:bg-green-700 p-1 " href="{{route('formAjouterPost.show',$categorie->id)}}">Ajouter un post</a>
@@ -68,6 +68,7 @@
                       <td>
                             <a href="{{route('post.delete',[$categorie['id'],$post['id']])}}" class="bg-red-600 hover:bg-red-700 rounded-null p-px text-white font-bold">supprimer</a>
                             <a href="{{route('post.edit',[$categorie['id'],$post['id']])}}" class="bg-amber-400 hover:bg-amber-500 rounded-null p-px text-white font-bold">modifier</a>
+
                       </td>
 
 

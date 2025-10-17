@@ -17,8 +17,6 @@ class InviteController extends Controller
         ->join('categories','categories.id','=','posts.category_id')
         ->select('posts.title','posts.updated_at','posts.image','posts.description','categories.categoriePere','categories.categorieFils')
         ->get();
-        
-
         return view('welcome',['posts'=>$posts]);
 
     }

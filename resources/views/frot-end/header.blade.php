@@ -28,9 +28,13 @@
        
 
     </div>
-    <!--image==> background-image -->
-    <div class="w-full  mt-px h-screen">
+    <!--image==> background-image 
+    
+    
+    -->
 
+    <div class="w-full  mt-px h-screen">
+      
       @yield('mycontent')
 
 

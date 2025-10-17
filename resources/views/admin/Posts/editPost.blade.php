@@ -14,7 +14,7 @@
     <h1 class="text-2xl font-bold text-center mb-6">modifier un post</h1>
     
 
-    <form method="post" enctype="multipart/form-data" action="{{route('post.update',[$post['id'],$categorie['id']])}}" >
+    <form method="post" enctype="multipart/form-data" action="{{route('post.update',[$categorie['id'],$post['id']])}}" >
       @csrf
       @method('put')
      

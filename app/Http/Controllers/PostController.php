@@ -30,9 +30,6 @@ class PostController extends Controller
      
 
         return view('admin.Posts.formRemplir',['category'=>$categorie]);
-
-
-
     }
     public function store(Request $request,$idCategorie){
       
@@ -66,7 +63,7 @@ class PostController extends Controller
 
     public function delete($idCategory,$idpost){
 
-        $post=Post::findOrFail($idpost)->first();
+        $post=Post::findOrFail($idpost);
         $post->delete();
         return redirect()->route('posts.index',$idCategory)->with('status','suppression de la post succes ');
     }
@@ -76,7 +73,7 @@ class PostController extends Controller
       $post=Post::findOrFail($idpost);
       $categorie=Category::findOrFail($idCategorie);
 
-      return view('admin.Posts.editPost',['post'=>$post,'categorie'=>$categorie]);
+      return view('admin.Posts.editPost',['categorie'=>$categorie,'post'=>$post]);
     }
 
 
@@ -99,12 +96,9 @@ class PostController extends Controller
         'description'=>$description,
         'description_detail'=>$description_detail,
         'image'=>$imagePath,
-
-
-
-
       ]);
-      return redirect()->route('posts.index',[$idCategorie]);
+      return redirect()->route('posts.index',$idCategorie);
+      
 
     }
 }
