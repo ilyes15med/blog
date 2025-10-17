@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use  App\Http\Controllers\PostController;
-Route::get('/', function () {
-    return view('welcome');
-});
+use  App\Http\Controllers\InviteController;
+
+
+Route::get('/',[InviteController::class,'index'])->name('post.index');
  
 Route::get('/Subscribe/user',function(){
 
@@ -46,6 +47,7 @@ Route::get('/Category/{id}/Posts',[PostController::class,'index'])->name('posts.
 Route::get('/Category/{id}/Post/form',[PostController::class,'showform'])->name('formAjouterPost.show');
 
 Route::post('/Category/{id}/Post/create',[PostController::class,'store'])->name('post.store');
+
 //delete post
 
 Route::get('/Category/{idCategorie}/Post/delete/{idPost}',[PostController::class,'delete'])->name('post.delete');

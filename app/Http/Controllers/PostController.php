@@ -64,7 +64,7 @@ class PostController extends Controller
     }
 
 
-    public function delete($idpost,$idCategory){
+    public function delete($idCategory,$idpost){
 
         $post=Post::findOrFail($idpost)->first();
         $post->delete();
@@ -72,7 +72,7 @@ class PostController extends Controller
     }
 
 
-    public function edit($idpost,$idCategorie){
+    public function edit($idCategorie,$idpost){
       $post=Post::findOrFail($idpost);
       $categorie=Category::findOrFail($idCategorie);
 
@@ -80,7 +80,7 @@ class PostController extends Controller
     }
 
 
-    public function update(Request $request,$idpost,$idCategorie){
+    public function update(Request $request,$idCategorie,$idpost){
       
       $title=$request->title;
       $description=$request->description;
@@ -104,7 +104,7 @@ class PostController extends Controller
 
 
       ]);
-      return $this->index($idCategorie);
+      return redirect()->route('posts.index',[$idCategorie]);
 
     }
 }

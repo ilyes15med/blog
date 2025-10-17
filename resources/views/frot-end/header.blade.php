@@ -29,9 +29,9 @@
 
     </div>
     <!--image==> background-image -->
-    <div class="w-full mt-px h-screen bg-[url('/assets/3698488.jpg')] bg-cover bg-center">
+    <div class="w-full  mt-px h-screen">
 
-      @yield('mycontent');
+      @yield('mycontent')
 
 
     </div>
