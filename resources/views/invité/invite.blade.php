@@ -1,10 +1,15 @@
-<!-- crete a nav avec justify-around-->
+
+@php
+    use Illuminate\Support\Str;
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle Panel</title>
+    <title> Oxygen</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900">
@@ -28,10 +33,7 @@
        
 
     </div>
-    <!--image==> background-image 
-    
-    
-    -->
+  
 
     <div class="w-full  mt-px h-screen">
 
@@ -40,19 +42,38 @@
           @else
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach ($posts as $post)
-                          <a class="bg-white rounded-2xl shadow-md overflow-hidden hover:bg-cyan-200">
+                          <a href="{{route('post.postshow',$post->id)}}" class="bg-white rounded-2xl shadow-md overflow-hidden active:bg-cyan-200">
                              
                                   
-                                    <h3 class="p-0.5 text-xl">{{$post->title}}</h3> 
+                                   
+                                   
+                                    <div class="space-y-0.5">
+                                      
+                                                <img src="{{asset('storage/'.$post->image)}}" alt="{{$post->title}}"  class="min-w-full min-h-24 object-cover rounded-lg shadow">
+                                   
+                                     
+                                       
+                                                <p class="p-0.5 text-2xl line-clamp-3">
+                                                  {{$post->title}}
+                                                </p> 
+                                           
+                                     
+                                          
 
-                                    <img src="{{asset('storage/'.$post->image)}}" alt="{{$post->title}}"  class="max-w-48 min-h-24 object-cover rounded-lg shadow">
-                                     <p class="p-0.5">{{$post->description}}</p>
+                                                <p>{{$post->updated_at}}</p>
+                               
+                                                <p class="p-0.5">{{Str::limit($post->description,100,'...')}}</p>
+                                                <p class="text-red-500 p-0.5">En savoir plus</p>
+                                    
+                                     
+                                        </div>
+
                                 
                                      
                                  
                              
-                          </a>    
-                        @endforeach
+                            </a>    
+                          @endforeach
                 </div>
           @endif
 

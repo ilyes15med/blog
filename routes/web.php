@@ -56,3 +56,6 @@ Route::put('/Category/{idcategorie}/Post/{idpost}',[PostController::class,'updat
 //delete post
 
 Route::get('/Category/{idCategorie}/Post/delete/{idPost}',[PostController::class,'delete'])->name('post.delete');
+
+//invité
+Route::get('/posts/{idpost}',[InviteController::class,'PostShow'])->name('post.postshow');
